@@ -21,7 +21,7 @@ struct ChartData {
 }
 
 private extension CGFloat {
-    static let graphLineWidth: CGFloat = 1.0
+    static let graphLineWidth: CGFloat = 2.0
     static let scale: CGFloat = 0.015
     static let lineViewHeightMultiplier: CGFloat = 0.7
     static let baseLineWidth: CGFloat = 1.0
@@ -129,17 +129,12 @@ final class GraphView: UIView {
     
     @objc func userDidPan(_ pgr: UIPanGestureRecognizer) {
         let touchLocation = pgr.location(in: self)
-        
         switch pgr.state {
         case .changed, .began, .ended:
             let x = convertTouchLocationToPointX(touchLocation: touchLocation)
-            
             guard let xIndex = xCoordinates.index(of: x) else { return }
-            
             let dataPoint = dataPoints.data[xIndex]
-            
             updateIndicator(with: x, date: dataPoint.date, price: dataPoint.price)
-            
         default: break
         }
     }
