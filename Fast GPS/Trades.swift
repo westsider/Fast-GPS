@@ -121,6 +121,18 @@ class Trades: Object {
         let sum = all.reduce(0, +)
         return sum / Double(all.count)
     }
+    
+    static func graphData() -> [(date: Date, price: Double)]  {
+        let allTrades = getAllTrades()
+        var data : [(date: Date, price: Double)] = []
+        var cumulative: Double = 0
+        // MARK: - add cumulative total
+        for trade in allTrades {
+            cumulative += (trade.profit + trade.commision)
+            data.append((date: trade.date, price: cumulative) )
+        }
+        return data
+    }
 }
 
 extension Array where Element: Hashable {

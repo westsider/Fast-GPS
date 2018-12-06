@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		981E107B21B977C20043AB04 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E107A21B977C20043AB04 /* GraphView.swift */; };
 		982C95E521B87CD0003D67A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982C95E421B87CD0003D67A4 /* AppDelegate.swift */; };
 		982C95E721B87CD0003D67A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982C95E621B87CD0003D67A4 /* ViewController.swift */; };
 		982C95EA21B87CD0003D67A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 982C95E821B87CD0003D67A4 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		981E107A21B977C20043AB04 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		982C95E121B87CD0003D67A4 /* Fast GPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fast GPS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		982C95E421B87CD0003D67A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		982C95E621B87CD0003D67A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,13 +88,14 @@
 		982C95E321B87CD0003D67A4 /* Fast GPS */ = {
 			isa = PBXGroup;
 			children = (
-				982C95E421B87CD0003D67A4 /* AppDelegate.swift */,
+				982C95E821B87CD0003D67A4 /* Main.storyboard */,
 				982C95E621B87CD0003D67A4 /* ViewController.swift */,
+				981E107A21B977C20043AB04 /* GraphView.swift */,
 				982C95F621B87DDA003D67A4 /* Trades.swift */,
 				982C95FC21B87F04003D67A4 /* CSV Helper.swift */,
 				982C95FA21B87ED1003D67A4 /* Utilities.swift */,
-				982C95E821B87CD0003D67A4 /* Main.storyboard */,
 				982C95EB21B87CD2003D67A4 /* Assets.xcassets */,
+				982C95E421B87CD0003D67A4 /* AppDelegate.swift */,
 				982C95ED21B87CD2003D67A4 /* LaunchScreen.storyboard */,
 				982C95F021B87CD2003D67A4 /* Info.plist */,
 				982C95F821B87EA5003D67A4 /* Profit.txt */,
@@ -228,6 +231,7 @@
 				982C95F721B87DDA003D67A4 /* Trades.swift in Sources */,
 				982C95FB21B87ED1003D67A4 /* Utilities.swift in Sources */,
 				982C95E521B87CD0003D67A4 /* AppDelegate.swift in Sources */,
+				981E107B21B977C20043AB04 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

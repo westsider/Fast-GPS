@@ -18,20 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GPS Fast Robot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Als-LC-WTf">
-                                <rect key="frame" x="127" y="190" width="120" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ibe-hb-gXC">
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="3xw-v7-wbK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ibe-hb-gXC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3h6-U0-VVT"/>
+                            <constraint firstItem="Ibe-hb-gXC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="N2J-oB-1Oq"/>
+                            <constraint firstItem="Ibe-hb-gXC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qi5-WN-5YF"/>
+                            <constraint firstItem="Ibe-hb-gXC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ugv-9f-bnS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="topView" destination="Ibe-hb-gXC" id="Vhv-az-qng"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
