@@ -170,9 +170,23 @@ final class GraphView: UIView {
     }
     
     private func updateIndicator(with offset: CGFloat, date: Date) {
-        
         timeStampLabel.text = dateFormatter.string(from: date).uppercased()
         lineViewLeading.constant = offset
+        let tsWidth = timeStampLabel.frame.width
+        let tsMin = timeStampLabel.frame.width / 2 + .timeStampPadding
+        let tsMax = width - timeStampLabel.frame.width / 2 - .timeStampPadding
+        
+        let isCenter = offset > tsMin && offset < tsMax
+        let isLeftEdge = offset + tsMin < tsMax
+        
+        if isCenter {
+            timeStampLeading.constant = -tsWidth / 2
+        }
+        else if isLeftEdge {
+            timeStampLeading.constant = -tsWidth / 2 + (tsWidth / 2 - offset) + .timeStampPadding
+        } else {
+            timeStampLeading.constant = -tsWidth + (width - offset) - .timeStampPadding
+        }
     }
 }
 
