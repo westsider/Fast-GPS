@@ -113,7 +113,8 @@ final class GraphView: UIView {
     }
     
     private func configureTimeStampLabel() {
-        timeStampLabel.configureTitleLabel(withText: "MAY 25")
+        let defaultText = dateFormatter.string(from: dataPoints.data.first?.date ?? Date()).uppercased() + "\n\(Utilities.dollarValue(forDouble: dataPoints.data.first?.price ?? 1000))"
+        timeStampLabel.configureTitleLabel(withText: "\(defaultText)")
         timeStampLabel.textColor = .lightTitleTextColor
         addSubview(timeStampLabel)
         timeStampLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -137,7 +138,7 @@ final class GraphView: UIView {
             
             let dataPoint = dataPoints.data[xIndex]
             
-            updateIndicator(with: x, date: dataPoint.date)
+            updateIndicator(with: x, date: dataPoint.date, price: dataPoint.price)
             
         default: break
         }
@@ -166,11 +167,11 @@ final class GraphView: UIView {
         let x = convertTouchLocationToPointX(touchLocation: touchLocation)
         guard let xIndex = xCoordinates.lastIndex(of: x) else { return }
         let dataPoint = dataPoints.data[xIndex]
-        updateIndicator(with: x, date: dataPoint.date)
+        updateIndicator(with: x, date: dataPoint.date, price: dataPoint.price)
     }
     
-    private func updateIndicator(with offset: CGFloat, date: Date) {
-        timeStampLabel.text = dateFormatter.string(from: date).uppercased()
+    private func updateIndicator(with offset: CGFloat, date: Date, price: Double) {
+        timeStampLabel.text = dateFormatter.string(from: date).uppercased() + "\n\(Utilities.dollarValue(forDouble: price))"
         lineViewLeading.constant = offset
         let tsWidth = timeStampLabel.frame.width
         let tsMin = timeStampLabel.frame.width / 2 + .timeStampPadding
