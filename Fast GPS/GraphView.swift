@@ -64,7 +64,6 @@ final class GraphView: UIView {
         height = rect.size.height
         width = rect.size.width
         step = width/CGFloat(dataPoints.data.count)
-        print("width \(width) height \(height) step \(step)")
         drawGraph()
         //drawMiddleLine()
         configureLineIndicatorView()
@@ -84,12 +83,9 @@ final class GraphView: UIView {
         }
         
         for (index, dataPoint) in dataPoints.data.enumerated() {
-            print("\(index) \t\(dataPoint.price) \(dataPoints.openingPrice)")
             let midPoint = dataPoints.openingPrice
             let graphMiddle = height * 0.85
-            
             let y: CGFloat =  graphMiddle + CGFloat(midPoint - dataPoint.price) * .scale
-            
             let newPoint = CGPoint(x: xCoordinates[index], y: y)
             graphPath.addLine(to: newPoint)
         }

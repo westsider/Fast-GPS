@@ -16,6 +16,18 @@ private extension CGFloat {
 class ViewController: UIViewController {
 
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
+    @IBOutlet weak var label7: UILabel!
+    @IBOutlet weak var label8: UILabel!
+    @IBOutlet weak var label9: UILabel!
+    @IBOutlet weak var label10: UILabel!
+    @IBOutlet weak var label11: UILabel!
+    
     private var graphData = ChartData.portfolioData
     
     lazy private var graphView: GraphView = {
@@ -28,7 +40,11 @@ class ViewController: UIViewController {
         if Trades.getAllTrades().count < 1 {
             CSVhelper().importCSV(debug: true)
         }
-        //Trades.debugAllTrades()
+        bindData()
+        setUpGraph()
+    }
+    
+    func setUpGraph() {
         graphView.backgroundColor = .white
         graphView.translatesAutoresizingMaskIntoConstraints = false
         topView.addSubview(graphView)
@@ -41,23 +57,18 @@ class ViewController: UIViewController {
             ])
     }
     
-    func showStats() {
-        print("\n-------------------------------------------------------------------------------\nTrades \(Trades.getAllTrades().count)")
-        print("Largest Winner \(Utilities.dollarValue(forDouble: Trades.largestWin())) \nLargest Loss \(Utilities.dollarValue(forDouble: Trades.largestLoss()))")
-        print(("Largest Week \(Utilities.dollarValue(forDouble: Trades.largestWeek()))"))
-        print(("Smallest Week \(Utilities.dollarValue(forDouble: Trades.smallestWeek()))"))
-        print(("Average Week \(Utilities.dollarValue(forDouble: Trades.averageWeek()))"))
-        print("Net Profit \(Utilities.dollarValue(forDouble: Trades.totalProfit()))")
-        print("Swap \(Utilities.dollarValue(forDouble: Trades.totalSwap()))")
-        print("Gross Profit \(Utilities.dollarValue(forDouble: Trades.totalProfit() + Trades.totalSwap()))")
+    func bindData() {
+        label1.text = "\(Trades.getAllTrades().count)"
+        label2.text = Utilities.dollarValue(forDouble: Trades.largestWin())
+        label3.text = Utilities.dollarValue(forDouble: Trades.largestLoss())
+        label4.text = Utilities.dollarValue(forDouble: Trades.largestWeek())
+        label5.text = Utilities.dollarValue(forDouble: Trades.smallestWeek())
+        label6.text = Utilities.dollarValue(forDouble: Trades.averageWeek())
+        label7.text = Utilities.dollarValue(forDouble: Trades.totalProfit())
+        label8.text = Utilities.dollarValue(forDouble: Trades.totalSwap())
+        label9.text = Utilities.dollarValue(forDouble: Trades.totalProfit() + Trades.totalSwap())
         let income = (Trades.totalProfit() + Trades.totalSwap()) / 3
-        print("Montly income  \(Utilities.dollarValue(forDouble: income))")
-        print("Roi \(String(format: "%.2f", Trades.totalRoi()))%")
-        print("-------------------------------------------------------------------------------")
+        label10.text = Utilities.dollarValue(forDouble: income)
+        label11.text = String(format: "%.2f", Trades.totalRoi()) + " %"
     }
-
-
 }
-
-
-
