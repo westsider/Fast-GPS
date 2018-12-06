@@ -91,9 +91,7 @@
 				982C95E821B87CD0003D67A4 /* Main.storyboard */,
 				982C95E621B87CD0003D67A4 /* ViewController.swift */,
 				981E107A21B977C20043AB04 /* GraphView.swift */,
-				982C95F621B87DDA003D67A4 /* Trades.swift */,
-				982C95FC21B87F04003D67A4 /* CSV Helper.swift */,
-				982C95FA21B87ED1003D67A4 /* Utilities.swift */,
+				984C8EE521B9C6D400F59B15 /* Model */,
 				982C95EB21B87CD2003D67A4 /* Assets.xcassets */,
 				982C95E421B87CD0003D67A4 /* AppDelegate.swift */,
 				982C95ED21B87CD2003D67A4 /* LaunchScreen.storyboard */,
@@ -101,6 +99,16 @@
 				982C95F821B87EA5003D67A4 /* Profit.txt */,
 			);
 			path = "Fast GPS";
+			sourceTree = "<group>";
+		};
+		984C8EE521B9C6D400F59B15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				982C95F621B87DDA003D67A4 /* Trades.swift */,
+				982C95FC21B87F04003D67A4 /* CSV Helper.swift */,
+				982C95FA21B87ED1003D67A4 /* Utilities.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -44,6 +44,7 @@ final class GraphView: UIView {
     private var timeStampLeading = NSLayoutConstraint()
     
     private let panGestureRecognizer = UIPanGestureRecognizer()
+    private let longPressGestureRecognizer = UILongPressGestureRecognizer()
     
     private var height: CGFloat = 0
     private var width: CGFloat = 0
@@ -60,16 +61,16 @@ final class GraphView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        
         height = rect.size.height
         width = rect.size.width
         step = width/CGFloat(dataPoints.data.count)
         drawGraph()
-        //drawMiddleLine()
         configureLineIndicatorView()
         configureTimeStampLabel()
         addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.addTarget(self, action: #selector(userDidPan(_:)))
+        addGestureRecognizer(longPressGestureRecognizer)
+        longPressGestureRecognizer.addTarget(self, action: #selector(userDidLongPress(_:)))
     }
     
     private func drawGraph() {
@@ -158,6 +159,14 @@ final class GraphView: UIView {
         }
         
         return x
+    }
+    
+    @objc func userDidLongPress(_ tgr: UILongPressGestureRecognizer) {
+        let touchLocation = tgr.location(in: self)
+        let x = convertTouchLocationToPointX(touchLocation: touchLocation)
+        guard let xIndex = xCoordinates.lastIndex(of: x) else { return }
+        let dataPoint = dataPoints.data[xIndex]
+        updateIndicator(with: x, date: dataPoint.date)
     }
     
     private func updateIndicator(with offset: CGFloat, date: Date) {
