@@ -34,6 +34,10 @@ class ViewController: UIViewController {
         return GraphView(data: graphData)
     }()
     
+    lazy private var tickerControl: TickerControl = {
+        return TickerControl(value: graphData.openingPrice)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Trades.deleteAll()
@@ -47,6 +51,7 @@ class ViewController: UIViewController {
     func setUpGraph() {
         graphView.backgroundColor = .white
         graphView.translatesAutoresizingMaskIntoConstraints = false
+        graphView.delagate = self
         topView.addSubview(graphView)
         
         view.addConstraints([
@@ -72,3 +77,10 @@ class ViewController: UIViewController {
         label11.text = String(format: "%.2f", Trades.totalRoi()) + " %"
     }
 }
+
+extension ViewController: GraphViewDelegate {
+    func didMoveToPrice(_ graphView: GraphView, price: Double) {
+        tickerControl.showNumber(price)
+    }
+}
+

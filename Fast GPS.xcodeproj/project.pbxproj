@@ -18,6 +18,10 @@
 		982C95FB21B87ED1003D67A4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982C95FA21B87ED1003D67A4 /* Utilities.swift */; };
 		982C95FD21B87F04003D67A4 /* CSV Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982C95FC21B87F04003D67A4 /* CSV Helper.swift */; };
 		98A7CC5821B9D4F500098D40 /* Graph Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A7CC5721B9D4F500098D40 /* Graph Helpers.swift */; };
+		98FCE3F021BACA3E006576A3 /* Chart Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FCE3EF21BACA3E006576A3 /* Chart Data.swift */; };
+		98FCE3F621BAD038006576A3 /* TickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FCE3F321BAD038006576A3 /* TickerControl.swift */; };
+		98FCE3F721BAD038006576A3 /* TickerColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FCE3F421BAD038006576A3 /* TickerColumnCell.swift */; };
+		98FCE3F821BAD038006576A3 /* TickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FCE3F521BAD038006576A3 /* TickerCell.swift */; };
 		AAACD7B7E97195C1B987C90F /* Pods_Fast_GPS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E578E0B3EE3DE2C226C5B90E /* Pods_Fast_GPS.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +39,10 @@
 		982C95FA21B87ED1003D67A4 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		982C95FC21B87F04003D67A4 /* CSV Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CSV Helper.swift"; sourceTree = "<group>"; };
 		98A7CC5721B9D4F500098D40 /* Graph Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graph Helpers.swift"; sourceTree = "<group>"; };
+		98FCE3EF21BACA3E006576A3 /* Chart Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chart Data.swift"; sourceTree = "<group>"; };
+		98FCE3F321BAD038006576A3 /* TickerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerControl.swift; sourceTree = "<group>"; };
+		98FCE3F421BAD038006576A3 /* TickerColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerColumnCell.swift; sourceTree = "<group>"; };
+		98FCE3F521BAD038006576A3 /* TickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerCell.swift; sourceTree = "<group>"; };
 		DA3FF6E56C93956B3147B0F4 /* Pods-Fast GPS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fast GPS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fast GPS/Pods-Fast GPS.debug.xcconfig"; sourceTree = "<group>"; };
 		E11C506AE96B5C470200407E /* Pods-Fast GPS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fast GPS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fast GPS/Pods-Fast GPS.release.xcconfig"; sourceTree = "<group>"; };
 		E578E0B3EE3DE2C226C5B90E /* Pods_Fast_GPS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fast_GPS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +77,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		981BEB4E21BAD72300203DCA /* Ticker */ = {
+			isa = PBXGroup;
+			children = (
+				98FCE3F521BAD038006576A3 /* TickerCell.swift */,
+				98FCE3F421BAD038006576A3 /* TickerColumnCell.swift */,
+				98FCE3F321BAD038006576A3 /* TickerControl.swift */,
+			);
+			path = Ticker;
+			sourceTree = "<group>";
+		};
+		981BEB4F21BAD73400203DCA /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				981E107A21B977C20043AB04 /* GraphView.swift */,
+				98FCE3EF21BACA3E006576A3 /* Chart Data.swift */,
+				98A7CC5721B9D4F500098D40 /* Graph Helpers.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
 		982C95D821B87CD0003D67A4 = {
 			isa = PBXGroup;
 			children = (
@@ -92,8 +120,8 @@
 			children = (
 				982C95E821B87CD0003D67A4 /* Main.storyboard */,
 				982C95E621B87CD0003D67A4 /* ViewController.swift */,
-				981E107A21B977C20043AB04 /* GraphView.swift */,
-				98A7CC5721B9D4F500098D40 /* Graph Helpers.swift */,
+				981BEB4F21BAD73400203DCA /* Chart */,
+				981BEB4E21BAD72300203DCA /* Ticker */,
 				984C8EE521B9C6D400F59B15 /* Model */,
 				982C95EB21B87CD2003D67A4 /* Assets.xcassets */,
 				982C95E421B87CD0003D67A4 /* AppDelegate.swift */,
@@ -240,10 +268,14 @@
 				982C95FD21B87F04003D67A4 /* CSV Helper.swift in Sources */,
 				982C95E721B87CD0003D67A4 /* ViewController.swift in Sources */,
 				982C95F721B87DDA003D67A4 /* Trades.swift in Sources */,
+				98FCE3F621BAD038006576A3 /* TickerControl.swift in Sources */,
 				98A7CC5821B9D4F500098D40 /* Graph Helpers.swift in Sources */,
 				982C95FB21B87ED1003D67A4 /* Utilities.swift in Sources */,
 				982C95E521B87CD0003D67A4 /* AppDelegate.swift in Sources */,
+				98FCE3F721BAD038006576A3 /* TickerColumnCell.swift in Sources */,
+				98FCE3F821BAD038006576A3 /* TickerCell.swift in Sources */,
 				981E107B21B977C20043AB04 /* GraphView.swift in Sources */,
+				98FCE3F021BACA3E006576A3 /* Chart Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

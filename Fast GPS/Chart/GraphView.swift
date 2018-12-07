@@ -8,24 +8,8 @@
 
 import UIKit
 
-struct ChartData {
-    let openingPrice: Double
-    let data: [(date: Date, price: Double)]
-    
-    static var portfolioData: ChartData {
-        let chartData: [(date: Date, price: Double)]  = Trades.graphData()
-        let startPrice: Double = chartData.first?.price ?? 100.0
-        let portfolioData = ChartData(openingPrice: startPrice, data: chartData)
-        return portfolioData
-    }
-}
-
-private extension CGFloat {
-    static let graphLineWidth: CGFloat = 2.0
-    static let scale: CGFloat = 0.015
-    static let lineViewHeightMultiplier: CGFloat = 0.7
-    static let baseLineWidth: CGFloat = 1.0
-    static let timeStampPadding: CGFloat = 10.0
+protocol GraphViewDelegate: class {
+    func didMoveToPrice(_ graphView: GraphView, price: Double)
 }
 
 final class GraphView: UIView {
@@ -50,6 +34,9 @@ final class GraphView: UIView {
     private var width: CGFloat = 0
     private var step: CGFloat = 1
     private var xCoordinates: [CGFloat] = []
+    
+    weak var delagate: GraphViewDelegate?
+    private var feedbackGenerator = UISelectionFeedbackGenerator()
     
     init(data: ChartData) {
         self.dataPoints = data
@@ -143,9 +130,7 @@ final class GraphView: UIView {
         
         let maxX: CGFloat = width
         let minX: CGFloat = 0
-        
         var x = min(max(touchLocation.x, maxX), minX)
-        
         xCoordinates.forEach { (xCoordinate) in
             let difference = abs(xCoordinate - touchLocation.x)
             if difference <= step {
@@ -153,7 +138,6 @@ final class GraphView: UIView {
                 return
             }
         }
-        
         return x
     }
     
@@ -167,6 +151,13 @@ final class GraphView: UIView {
     
     private func updateIndicator(with offset: CGFloat, date: Date, price: Double) {
         timeStampLabel.text = dateFormatter.string(from: date).uppercased() + "\n\(Utilities.dollarValue(forDouble: price))"
+        
+        if offset != lineViewLeading.constant {
+            feedbackGenerator.prepare()
+            feedbackGenerator.selectionChanged()
+            delagate?.didMoveToPrice(self, price: price)
+        }
+        
         lineViewLeading.constant = offset
         let tsWidth = timeStampLabel.frame.width
         let tsMin = timeStampLabel.frame.width / 2 + .timeStampPadding
@@ -184,4 +175,12 @@ final class GraphView: UIView {
             timeStampLeading.constant = -tsWidth + (width - offset) - .timeStampPadding
         }
     }
+}
+
+private extension CGFloat {
+    static let graphLineWidth: CGFloat = 2.0
+    static let scale: CGFloat = 0.015
+    static let lineViewHeightMultiplier: CGFloat = 0.7
+    static let baseLineWidth: CGFloat = 1.0
+    static let timeStampPadding: CGFloat = 10.0
 }

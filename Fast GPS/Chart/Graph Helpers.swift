@@ -58,3 +58,9 @@ enum RobotoWeight: String {
     case medium = "Roboto-Medium"
     case bold = "Roboto-Bold"
 }
+
+extension String {
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+}
